@@ -5,6 +5,7 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { User } from './entities/user.entity';
 import { MsSqlDriver } from '@mikro-orm/mssql';
 import { ReflectMetadataProvider } from '@mikro-orm/decorators/legacy';
+import { Group } from './entities/group.entity';
 
 @Module({
   imports: [MikroOrmModule.forRoot({
@@ -13,8 +14,9 @@ import { ReflectMetadataProvider } from '@mikro-orm/decorators/legacy';
     user: 'sa',
     password: 'Azerty!',
     dbName: 'mssql',
-    entities: [User],
+    entities: [User, Group],
     metadataProvider: ReflectMetadataProvider,
+    debug: true,
   })],
   controllers: [AppController],
   providers: [AppService],

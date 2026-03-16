@@ -7,12 +7,12 @@ export class AppController {
   constructor(private em: EntityManager) {}
 
   @Get()
-  async getHello() {
+  async getHello(): Promise<any> {
     const [users, count] = await this.em.getRepository(User).findAndCount({}, { populate: ['groups'] })
 
     return {
       count,
-      users: serialize(users, { populate: ['*'] })
+      users: serialize(users)
     }
   }
 }

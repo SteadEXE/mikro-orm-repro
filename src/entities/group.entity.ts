@@ -1,4 +1,4 @@
-import { Entity, ManyToMany, PrimaryKey } from '@mikro-orm/decorators/legacy';
+hore:import { Entity, ManyToOne, PrimaryKey } from '@mikro-orm/decorators/legacy';
 import { User } from './user.entity';
 import type { Rel } from '@mikro-orm/core';
 
@@ -7,6 +7,6 @@ export class Group {
     @PrimaryKey()
     id!: number;
 
-    @ManyToMany(() => User)
+    @ManyToOne(() => User)
     user!: Rel<User>;
 }
